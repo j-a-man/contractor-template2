@@ -24,7 +24,7 @@ export default function Header() {
 
                 {/* Center */}
                 <div className="absolute left-1/2 -translate-x-1/2 font-medium tracking-[0.2em] text-sm uppercase select-none text-white">
-                    <Link href="/">Crossworks</Link>
+                    <Link href="/">Strong Construction</Link>
                 </div>
 
                 {/* Right */}

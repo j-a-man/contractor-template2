@@ -6,10 +6,10 @@ export default function Footer() {
             <div className="max-w-screen-2xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-end gap-12">
                 <div className="max-w-sm">
                     <p className="font-medium tracking-[0.2em] text-sm uppercase mb-6">
-                        Crossworks Carpentry
+                        Strong Construction Services
                     </p>
                     <h3 className="text-2xl font-normal uppercase text-neutral-400 leading-tight">
-                        Veterans Building <br /> <span className="text-white">With Pride</span>
+                        Expert HVAC <br /> <span className="text-white">Solutions</span>
                     </h3>
                 </div>
 
@@ -38,7 +38,7 @@ export default function Footer() {
 
             <div className="max-w-screen-2xl mx-auto mt-16 pt-8 border-t border-white/5 text-center md:text-right">
                 <p className="text-[10px] text-neutral-600 uppercase tracking-wider">
-                    © 2025 Crossworks Carpentry. All Rights Reserved.
+                    © 2025 Strong Construction Services. All Rights Reserved.
                 </p>
             </div>
         </footer>

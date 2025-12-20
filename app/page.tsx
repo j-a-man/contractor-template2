@@ -20,46 +20,43 @@ import {
   Ruler,
   PaintBucket,
   Wrench,
-  Grid
+  Grid,
+  Thermometer,
+  Wind,
+  Zap
 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import ReviewFunnel from "@/components/ReviewFunnel";
 
 // Data for Advantages Section
 const advantages = [
   {
     id: "veteran",
-    title: "Veteran Owned & Operated",
-    icon: <Star className="w-5 h-5" />,
-    image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2070&auto=format&fit=crop", // Construction supervision
-    description: "Built on the principles of military discipline and integrity. We bring precision, punctuality, and unwavering dedication to every project.",
+    title: "Expert Technicians",
+    icon: <Medal className="w-5 h-5" />,
+    image: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=2070&auto=format&fit=crop", // HVAC technicians / vent work
+    description: "Our certified HVAC specialists are trained to handle any heating or cooling challenge with precision and care.",
   },
   {
-    id: "licensed",
-    title: "Licensed & Insured",
-    icon: <ShieldCheck className="w-5 h-5" />,
-    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2070&auto=format&fit=crop", // Planning/safety
-    description: "Your peace of mind is paramount. Crossworks Carpentry is fully licensed in Georgia and carries comprehensive liability insurance.",
-  },
-  {
-    id: "custom",
-    title: "Custom Woodworking Logic",
-    icon: <Ruler className="w-5 h-5" />,
-    image: "https://images.unsplash.com/photo-1617104424032-b9bd6972d0e4?q=80&w=2070&auto=format&fit=crop", // Detailed woodworking / drafting
-    description: "No two homes are alike. We specialize in bespoke solutions, from intricate cabinetry to custom deck layouts designed for your specific space.",
+    id: "precision",
+    title: "Energy Efficient",
+    icon: <Zap className="w-5 h-5" />,
+    image: "https://images.unsplash.com/photo-1545259741-2ea3ebf61fa3?q=80&w=2070&auto=format&fit=crop", // Smart home/AC unit
+    description: "We install and maintain high-efficiency systems that lower your utility bills and keep your home comfortable.",
   },
   {
     id: "local",
-    title: "Marietta Local Business",
+    title: "Local Texas Business",
     icon: <MapPin className="w-5 h-5" />,
-    image: "https://images.unsplash.com/photo-1577744383186-b4d00891d4e0?q=80&w=1974&auto=format&fit=crop", // Local home / friendly vibe
-    description: "We are your neighbors. Rooted in Marietta, we are committed to enhancing our local community one home at a time.",
+    image: "https://images.unsplash.com/photo-1600596542815-bfad4c1539a9?q=80&w=2000&auto=format&fit=crop", // Beautiful Texas estate/house
+    description: "Proudly serving our Texas community. We're your neighbors, and we stand behind our work with a satisfaction guarantee.",
   },
   {
     id: "satisfaction",
     title: "Satisfaction Guaranteed",
     icon: <Medal className="w-5 h-5" />,
-    image: "https://images.unsplash.com/photo-1621905252507-b35492cc253e?q=80&w=1974&auto=format&fit=crop", // Finished room / happy vibe
+    image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=2000&auto=format&fit=crop", // Beautiful home exterior
     description: "We don't leave until you're happy. Our reputation relies on your satisfaction, and we stand behind the quality of our craftsmanship.",
   },
 ];
@@ -67,77 +64,68 @@ const advantages = [
 // Data for Services Section
 const services = [
   {
-    id: "cabinetry",
-    label: "Custom Cabinetry",
+    id: "ac",
+    label: "AC Installation",
     tag: "01",
-    image: "https://images.unsplash.com/photo-1600607687644-c7171b42498f?q=80&w=2070&auto=format&fit=crop", // Reliable kitchen/cabinetry image
-    description: "Bespoke kitchen and built-in solutions designed for your space.",
-    longDescription: "Transform your storage with cabinetry that fits your lifestyle. From modern flat-panel kitchens to traditional shaker styles, we build and install custom units that maximize space and style.",
+    image: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=2000&auto=format&fit=crop",
+    description: "Professional installation of high-performance air conditioning systems.",
+    longDescription: "Beat the Texas heat with our top-tier AC installation services. We ensure your system is perfectly sized and installed for maximum efficiency.",
   },
   {
-    id: "deck",
-    label: "Deck Building",
+    id: "heating",
+    label: "Heating Repair",
     tag: "02",
-    image: "https://images.unsplash.com/photo-1591825729269-caeb344f6df2?q=80&w=1470&auto=format&fit=crop",
-    description: "Outdoor living spaces built for durability and relaxation.",
-    longDescription: "Extend your living area outdoors. We design and construct durable, safe, and beautiful decks using premium pressure-treated lumber or low-maintenance composite materials.",
+    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop", // Heater/Furnace
+    description: "Reliable heating repairs to keep you warm when it counts.",
+    longDescription: "From furnace malfunctions to heat pump issues, our experts diagnose and fix problems quickly to restore your home's comfort.",
   },
   {
-    id: "trim",
-    label: "Trim Work",
+    id: "maintenance",
+    label: "System Maintenance",
     tag: "03",
-    image: "https://images.unsplash.com/photo-1600585154363-67eb9e2e2099?q=80&w=1470&auto=format&fit=crop",
-    description: "Crown molding, wainscoting, and baseboards that add character.",
-    longDescription: "The difference is in the details. Our precise trim work elevates any room, adding architectural interest and a refined finish to your home.",
+    image: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=2069&auto=format&fit=crop", // Technician inspecting
+    description: "Regular maintenance plans to extend the life of your HVAC unit.",
+    longDescription: "Prevent costly breakdowns with our comprehensive maintenance checks. We clean, inspect, and tune up your system for peak performance.",
   },
   {
-    id: "flooring",
-    label: "Flooring",
+    id: "commercial",
+    label: "Commercial HVAC",
     tag: "04",
-    image: "https://images.unsplash.com/photo-1581858726768-758a030e9048?q=80&w=1470&auto=format&fit=crop",
-    description: "Expert installation of hardwood, laminate, and luxury vinyl plank.",
-    longDescription: "Ground your home with beautiful flooring. We handle everything from subfloor preparation to the flawless installation of solid wood or modern engineered planks.",
-  },
-  {
-    id: "renovations",
-    label: "Renovations",
-    tag: "05",
-    image: "https://images.unsplash.com/photo-1574359653015-749813e31ea7?q=80&w=1471&auto=format&fit=crop",
-    description: "Full-scale room remodels managing framing to finish.",
-    longDescription: "Ready for a change? We manage complex renovation projects, ensuring structural integrity while delivering the fresh, modern aesthetic you envision.",
+    image: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=2070&auto=format&fit=crop", // Commercial building/vents
+    description: "Scalable HVAC solutions for businesses and office buildings.",
+    longDescription: "We understand commercial needs. Our team delivers robust HVAC solutions that ensure a comfortable environment for your employees and customers.",
   },
 ];
 
 // Data for Projects Section
 const projects = [
   {
-    id: "estate",
-    title: "Big Oaks Estate",
-    description: "A full-scale renovation featuring custom coffered ceilings, hardwood flooring, and a wraparound deck.",
-    mainImage: "https://images.unsplash.com/photo-1600607687920-4e2b5f082d28?q=80&w=1470&auto=format&fit=crop",
+    id: "residential",
+    title: "Residential AC Upgrade",
+    description: "Complete system replacement for a 2,500 sq ft home, improving energy efficiency by 30%.",
+    mainImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2000&auto=format&fit=crop", // Beautiful modern house exterior
     gallery: [
-      "https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?q=80&w=800&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=800&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800&auto=format&fit=crop"
+      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2000&auto=format&fit=crop", // Modern interior
+      "https://images.unsplash.com/photo-1621905251918-48416bd8575a?q=80&w=2069&auto=format&fit=crop" // AC unit
     ]
   },
   {
-    id: "kitchen",
-    title: "Marietta Kitchen Makeover",
-    description: "Complete kitchen overhaul with custom shaker cabinets, quartz countertops, and a new island layout.",
-    mainImage: "https://images.unsplash.com/photo-1556909212-d5b604d0c90d?q=80&w=1470&auto=format&fit=crop", // Open kitchen
+    id: "commercial_install",
+    title: "Commercial Office HVAC",
+    description: "Installation of a multi-zone HVAC system for a new office complex in Dallas.",
+    mainImage: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=2070&auto=format&fit=crop",
     gallery: [
-      "https://images.unsplash.com/photo-1556912173-3db9963f6bee?q=80&w=1470&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1556909190-eccf4a8bf97a?q=80&w=1470&auto=format&fit=crop"
+      "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1469&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1504384308090-c54be3855091?q=80&w=1470&auto=format&fit=crop"
     ]
   },
   {
-    id: "library",
-    title: "Custom Library Shelving",
-    description: "Floor-to-ceiling built-in bookcases with integrated lighting and rolling ladder track.",
-    mainImage: "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?q=80&w=1600&auto=format&fit=crop",
+    id: "emergency",
+    title: "Emergency Repair",
+    description: "Rapid response repair for a failed heating system during a winter freeze.",
+    mainImage: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop",
     gallery: [
-      "https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=1470&auto=format&fit=crop"
+      "https://images.unsplash.com/photo-1584622050111-993a426fbf0a?q=80&w=2070&auto=format&fit=crop"
     ]
   }
 ];
@@ -186,12 +174,15 @@ export default function Home() {
         {/* Content */}
         <div className="relative z-10 px-6 md:px-12 w-full max-w-screen-2xl mx-auto flex flex-col md:flex-row items-end justify-between gap-8">
           <div className="max-w-4xl">
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-medium uppercase leading-[0.9] tracking-tighter text-white mb-6">
-              Mastering <br />
-              The Craft<span className="text-[#ff4d1c]">.</span>
+            <span className="text-[#ff4d1c] text-xs font-medium tracking-widest uppercase mb-4 block animate-in fade-in slide-in-from-bottom-4 duration-500 delay-100">
+              Strong Construction Services
+            </span>
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-normal uppercase leading-[0.9] tracking-tighter mb-8 text-white animate-in fade-in slide-in-from-bottom-6 duration-700 delay-200">
+              Expert <br />
+              <span className="text-neutral-500">HVAC Solutions</span>
             </h1>
-            <p className="text-neutral-300 text-sm md:text-base max-w-md font-light leading-relaxed">
-              Precision carpentry and custom woodworking. Veteran-owned excellence bringing your home projects to life in Marietta, GA.
+            <p className="text-neutral-400 text-lg md:text-xl font-light leading-relaxed max-w-xl animate-in fade-in slide-in-from-bottom-8 duration-700 delay-300">
+              Reliable heating and cooling for Texas homes and businesses. Quality service, every time.
             </p>
           </div>
 
@@ -269,7 +260,7 @@ export default function Home() {
               />
             ))}
             {/* Added stronger gradient text overlay for readability */}
-            <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/40 to-transparent z-20"></div>
+            <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/40 to-transparent"></div>
 
             <div className="absolute bottom-12 right-12 z-30 max-w-lg text-right">
               <h3 className="text-white text-3xl md:text-5xl font-medium uppercase leading-none tracking-tight mb-4 transition-all duration-500 key={activeAdvantage.id}">
@@ -371,10 +362,10 @@ export default function Home() {
               <img src={projects[0].gallery[0]} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
             </div>
             <div className="md:col-span-4 h-64 md:h-96 relative overflow-hidden mt-0 md:mt-12 group">
-              <img src={projects[0].gallery[1]} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale hover:grayscale-0" />
+              <img src={projects[0].mainImage} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale hover:grayscale-0" />
             </div>
             <div className="md:col-span-5 h-64 md:h-96 relative overflow-hidden group">
-              <img src={projects[0].gallery[2]} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+              <img src={projects[0].gallery[1]} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
             </div>
           </div>
 
@@ -491,6 +482,7 @@ export default function Home() {
         </div>
       </section>
 
+      <ReviewFunnel />
       <Footer />
     </>
   );

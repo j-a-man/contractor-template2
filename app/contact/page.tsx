@@ -17,19 +17,19 @@ export default function ContactPage() {
                                 Ready to <br /> Start?
                             </h1>
                             <p className="text-neutral-400 text-lg font-light leading-relaxed max-w-md">
-                                We are currently accepting new projects for the upcoming season. Reach out to schedule your consultation.
+                                Keep your home comfortable year-round. Contact us for HVAC installation, repair, and maintenance.
                             </p>
                         </div>
 
                         <div className="space-y-12 mt-16">
                             <div className="group">
                                 <p className="text-xs text-neutral-500 uppercase tracking-widest mb-2 group-hover:text-[#ff4d1c] transition-colors">Location</p>
-                                <p className="text-2xl font-light">2555 Big Oaks Dr,<br /> Marietta, GA 30064</p>
+                                <p className="text-2xl font-light">Texas, USA</p>
                             </div>
                             <div className="group">
                                 <p className="text-xs text-neutral-500 uppercase tracking-widest mb-2 group-hover:text-[#ff4d1c] transition-colors">Contact</p>
-                                <a href="tel:+17707140275" className="text-2xl font-light block hover:text-white transition-colors">+1 (770) 714-0275</a>
-                                <a href="mailto:info@crossworks.com" className="text-2xl font-light block hover:text-white transition-colors">info@crossworkscarpentry.com</a>
+                                <a href="tel:+12143851234" className="text-2xl font-light block hover:text-white transition-colors">(214) 385-1234</a>
+                                <a href="mailto:bdhautrey@gmail.com" className="text-2xl font-light block hover:text-white transition-colors">bdhautrey@gmail.com</a>
                             </div>
                             <div className="group">
                                 <p className="text-xs text-neutral-500 uppercase tracking-widest mb-2 group-hover:text-[#ff4d1c] transition-colors">Hours</p>

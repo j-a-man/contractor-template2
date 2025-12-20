@@ -9,8 +9,8 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "Crossworks Carpentry | Veteran Owned Master Carpenters",
-  description: "Premier carpentry services in Marietta, GA. Custom cabinetry, decks, and renovations. Veteran owned and operated by Mike Gervais.",
+  title: "Strong Construction Services | Expert HVAC Contractor",
+  description: "Premier HVAC services in Texas. AC installation, heating repair, and air quality solutions. Reliable, efficient, and customer-focused.",
 };
 
 export default function RootLayout({
