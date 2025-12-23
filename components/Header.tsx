@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { X, Menu as MenuIcon, Instagram, Facebook, Mail } from "lucide-react";
+import { X, Menu as MenuIcon, Instagram, Facebook, Mail, MessageSquare } from "lucide-react";
 
 export default function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -42,9 +42,11 @@ export default function Header() {
                     </div>
                     <Link
                         href="/contact"
-                        className="bg-[#ff4d1c] hover:bg-[#c2410c] text-white text-xs font-medium px-6 py-3 rounded-full uppercase tracking-wider transition-transform hover:scale-105"
+                        className="bg-[#ff4d1c] hover:bg-[#c2410c] text-white text-xs font-medium px-4 py-2 md:px-6 md:py-3 rounded-full uppercase tracking-wider transition-transform hover:scale-105"
+                        aria-label="Get a Quote"
                     >
-                        Get a Quote
+                        <span className="md:hidden">Quote</span>
+                        <span className="hidden md:inline">Get a Quote</span>
                     </Link>
                 </div>
             </header>
