@@ -45,7 +45,7 @@ export default function ReviewCarousel() {
     return (
         <section className="bg-[#0f0f0f] py-24 border-t border-white/5">
             <div className="max-w-screen-2xl mx-auto px-6 md:px-12">
-                <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+                <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6">
                     <div>
                         <span className="text-[#ff4d1c] text-xs font-medium tracking-widest uppercase mb-4 block">Testimonials</span>
                         <h2 className="text-4xl md:text-5xl font-medium uppercase leading-tight text-white">
@@ -54,30 +54,33 @@ export default function ReviewCarousel() {
                     </div>
 
                     {/* Navigation buttons */}
-                    <div className="flex gap-4 items-center">
+                    {/* Navigation buttons */}
+                    <div className="flex justify-between items-center w-full md:w-auto md:gap-4">
                         {/* New Review Button */}
                         <Link
                             href="/review"
-                            className="hidden md:flex items-center gap-2 px-6 py-3 mr-4 border border-white/10 hover:border-[#ff4d1c] hover:bg-[#ff4d1c] rounded-full transition-all group"
+                            className="flex items-center gap-2 px-6 py-3 md:mr-4 border border-white/10 hover:border-[#ff4d1c] hover:bg-[#ff4d1c] rounded-full transition-all group order-2 md:order-1"
                         >
                             <span className="text-white text-xs uppercase tracking-widest font-medium">Leave a Review</span>
                             <MessageSquarePlus className="w-4 h-4 text-[#ff4d1c] group-hover:text-white transition-colors" />
                         </Link>
 
-                        <button
-                            onClick={() => scroll("left")}
-                            disabled={!canScrollLeft}
-                            className={`w-12 h-12 rounded-full border border-white/10 flex items-center justify-center transition-all ${!canScrollLeft ? "opacity-30 cursor-not-allowed" : "hover:border-[#ff4d1c] hover:text-[#ff4d1c] active:bg-[#ff4d1c] active:text-white text-white"}`}
-                        >
-                            <ChevronLeft className="w-5 h-5" />
-                        </button>
-                        <button
-                            onClick={() => scroll("right")}
-                            disabled={!canScrollRight}
-                            className={`w-12 h-12 rounded-full border border-white/10 flex items-center justify-center transition-all ${!canScrollRight ? "opacity-30 cursor-not-allowed" : "hover:border-[#ff4d1c] hover:text-[#ff4d1c] active:bg-[#ff4d1c] active:text-white text-white"}`}
-                        >
-                            <ChevronRight className="w-5 h-5" />
-                        </button>
+                        <div className="flex gap-2 order-1 md:order-2">
+                            <button
+                                onClick={() => scroll("left")}
+                                disabled={!canScrollLeft}
+                                className={`flex w-12 h-12 rounded-full border border-white/10 items-center justify-center transition-all ${!canScrollLeft ? "opacity-30 cursor-not-allowed" : "hover:border-[#ff4d1c] hover:text-[#ff4d1c] active:bg-[#ff4d1c] active:text-white text-white"}`}
+                            >
+                                <ChevronLeft className="w-5 h-5" />
+                            </button>
+                            <button
+                                onClick={() => scroll("right")}
+                                disabled={!canScrollRight}
+                                className={`flex w-12 h-12 rounded-full border border-white/10 items-center justify-center transition-all ${!canScrollRight ? "opacity-30 cursor-not-allowed" : "hover:border-[#ff4d1c] hover:text-[#ff4d1c] active:bg-[#ff4d1c] active:text-white text-white"}`}
+                            >
+                                <ChevronRight className="w-5 h-5" />
+                            </button>
+                        </div>
                     </div>
                 </div>
 
@@ -90,7 +93,7 @@ export default function ReviewCarousel() {
                 >
                     {/* Review Cards */}
                     {reviews.map((r, i) => (
-                        <div key={i} className="min-w-[300px] md:min-w-[450px] bg-[#1a1a1a] p-8 md:p-10 rounded-xl border border-white/5 shadow-sm snap-start flex flex-col justify-between group hover:border-[#ff4d1c]/30 transition-colors">
+                        <div key={i} className="min-w-[85vw] md:min-w-[450px] bg-[#1a1a1a] p-8 md:p-10 rounded-xl border border-white/5 shadow-sm snap-center md:snap-start flex flex-col justify-between group hover:border-[#ff4d1c]/30 transition-colors">
                             <div>
                                 <div className="flex gap-1 text-[#ff4d1c] mb-6">
                                     {[...Array(r.rating)].map((_, i) => <Star key={i} className="w-4 h-4 fill-current" />)}
@@ -113,7 +116,7 @@ export default function ReviewCarousel() {
                     ))}
 
                     {/* Add Review Card - Updated for Dark Theme */}
-                    <div className="min-w-[300px] md:min-w-[450px] bg-[#ff4d1c] p-8 md:p-10 rounded-xl shadow-lg snap-start flex flex-col justify-center items-center text-center group relative overflow-hidden">
+                    <div className="min-w-[85vw] md:min-w-[450px] bg-[#ff4d1c] p-8 md:p-10 rounded-xl shadow-lg snap-center md:snap-start flex flex-col justify-center items-center text-center group relative overflow-hidden">
                         <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500"></div>
                         <div className="relative z-10 space-y-6">
                             <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto text-white">

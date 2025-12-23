@@ -7,13 +7,7 @@ import { Star, Quote, ArrowUpRight, MessageSquarePlus } from "lucide-react";
 
 // ... existing code ...
 
-<Link
-    href="/review"
-    className="group flex items-center gap-3 px-8 py-4 border border-neutral-300 hover:border-[#ff4d1c] hover:bg-[#ff4d1c] transition-all duration-300 rounded-full"
->
-    <span className="uppercase tracking-widest text-xs font-medium text-neutral-900 group-hover:text-white">Leave a Review</span>
-    <MessageSquarePlus className="w-4 h-4 text-[#ff4d1c] group-hover:text-white transition-colors" />
-</Link>
+
 
 // Mock reviews for now, can be replaced by real ones
 const reviews = [
@@ -38,14 +32,13 @@ export default function ReviewsPage() {
                             </p>
                         </div>
 
-                        <a
-                            href="https://www.google.com/search?q=Crossworks+Carpentry+marietta+ga+reviews"
-                            target="_blank"
+                        <Link
+                            href="/review"
                             className="group flex items-center gap-3 px-8 py-4 border border-neutral-300 hover:border-[#ff4d1c] hover:bg-[#ff4d1c] transition-all duration-300 rounded-full"
                         >
-                            <span className="uppercase tracking-widest text-xs font-medium text-neutral-900 group-hover:text-white">Read on Google</span>
-                            <ArrowUpRight className="w-4 h-4 text-[#ff4d1c] group-hover:text-white transition-colors" />
-                        </a>
+                            <span className="uppercase tracking-widest text-xs font-medium text-neutral-900 group-hover:text-white">Leave a Review</span>
+                            <MessageSquarePlus className="w-4 h-4 text-[#ff4d1c] group-hover:text-white transition-colors" />
+                        </Link>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">

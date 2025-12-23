@@ -186,7 +186,7 @@ export default function Home() {
       <Header />
 
       {/* 2. Hero Section */}
-      <section className="relative min-h-screen w-full overflow-hidden flex flex-col justify-end pb-12 md:pb-24 pt-24 md:pt-0">
+      <section className="relative min-h-screen w-full overflow-hidden flex flex-col justify-end pb-12 md:pb-24 pt-32 md:pt-0">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img
@@ -201,7 +201,7 @@ export default function Home() {
         {/* Content */}
         <div className="relative z-10 px-6 md:px-12 w-full max-w-screen-2xl mx-auto flex flex-col md:flex-row items-start md:items-end justify-between gap-8 md:gap-12 pb-8 md:pb-12">
           <div className="max-w-4xl pb-4 w-full md:w-auto">
-            <h1 className="text-4xl md:text-7xl lg:text-8xl font-medium uppercase leading-[0.9] tracking-tighter text-white mb-6">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-medium uppercase leading-[0.9] tracking-tighter text-white mb-6">
               Mastering <br />
               The Craft<span className="text-[#ff4d1c]">.</span>
             </h1>
@@ -210,7 +210,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="w-full md:w-auto">
+          <div className="w-full md:w-auto flex justify-center md:block">
             <QuoteForm />
           </div>
         </div>
