@@ -186,7 +186,7 @@ export default function Home() {
       <Header />
 
       {/* 2. Hero Section */}
-      <section className="relative h-screen w-full overflow-hidden flex flex-col justify-end pb-12 md:pb-24">
+      <section className="relative min-h-screen w-full overflow-hidden flex flex-col justify-end pb-12 md:pb-24 pt-24 md:pt-0">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img
@@ -199,9 +199,9 @@ export default function Home() {
 
 
         {/* Content */}
-        <div className="relative z-10 px-6 md:px-12 w-full max-w-screen-2xl mx-auto flex flex-col md:flex-row items-end justify-between gap-12 pb-12">
-          <div className="max-w-4xl pb-4">
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-medium uppercase leading-[0.9] tracking-tighter text-white mb-6">
+        <div className="relative z-10 px-6 md:px-12 w-full max-w-screen-2xl mx-auto flex flex-col md:flex-row items-start md:items-end justify-between gap-8 md:gap-12 pb-8 md:pb-12">
+          <div className="max-w-4xl pb-4 w-full md:w-auto">
+            <h1 className="text-4xl md:text-7xl lg:text-8xl font-medium uppercase leading-[0.9] tracking-tighter text-white mb-6">
               Mastering <br />
               The Craft<span className="text-[#ff4d1c]">.</span>
             </h1>
@@ -210,7 +210,9 @@ export default function Home() {
             </p>
           </div>
 
-          <QuoteForm />
+          <div className="w-full md:w-auto">
+            <QuoteForm />
+          </div>
         </div>
       </section>
 
@@ -268,7 +270,7 @@ export default function Home() {
           </div>
 
           {/* Right: Image (Interactive) */}
-          <div className="lg:col-span-8 relative group overflow-hidden h-[600px]">
+          <div className="lg:col-span-8 relative group overflow-hidden h-[400px] lg:h-[600px]">
             {advantages.map((adv) => (
               <img
                 key={adv.id}

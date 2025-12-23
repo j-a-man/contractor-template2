@@ -90,7 +90,7 @@ export default function ReviewCarousel() {
                 >
                     {/* Review Cards */}
                     {reviews.map((r, i) => (
-                        <div key={i} className="min-w-[350px] md:min-w-[450px] bg-[#1a1a1a] p-8 md:p-10 rounded-xl border border-white/5 shadow-sm snap-start flex flex-col justify-between group hover:border-[#ff4d1c]/30 transition-colors">
+                        <div key={i} className="min-w-[300px] md:min-w-[450px] bg-[#1a1a1a] p-8 md:p-10 rounded-xl border border-white/5 shadow-sm snap-start flex flex-col justify-between group hover:border-[#ff4d1c]/30 transition-colors">
                             <div>
                                 <div className="flex gap-1 text-[#ff4d1c] mb-6">
                                     {[...Array(r.rating)].map((_, i) => <Star key={i} className="w-4 h-4 fill-current" />)}
@@ -113,7 +113,7 @@ export default function ReviewCarousel() {
                     ))}
 
                     {/* Add Review Card - Updated for Dark Theme */}
-                    <div className="min-w-[350px] md:min-w-[450px] bg-[#ff4d1c] p-8 md:p-10 rounded-xl shadow-lg snap-start flex flex-col justify-center items-center text-center group relative overflow-hidden">
+                    <div className="min-w-[300px] md:min-w-[450px] bg-[#ff4d1c] p-8 md:p-10 rounded-xl shadow-lg snap-start flex flex-col justify-center items-center text-center group relative overflow-hidden">
                         <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500"></div>
                         <div className="relative z-10 space-y-6">
                             <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto text-white">
