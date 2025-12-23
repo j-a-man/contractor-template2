@@ -29,6 +29,9 @@ export default function Footer() {
                     <a href="/contact" className="hover:text-white transition-colors">
                         Contact
                     </a>
+                    <a href="/review" className="hover:text-white transition-colors text-[#ff4d1c]">
+                        Leave a Review
+                    </a>
                 </div>
 
                 <div className="flex gap-4">

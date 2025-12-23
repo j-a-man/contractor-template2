@@ -13,6 +13,8 @@ export const metadata: Metadata = {
   description: "Premier carpentry services in Marietta, GA. Custom cabinetry, decks, and renovations. Veteran owned and operated by Mike Gervais.",
 };
 
+import Chatbot from "@/components/Chatbot";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -24,6 +26,7 @@ export default function RootLayout({
         className={`${manrope.variable} bg-[#0f0f0f] text-white antialiased selection:bg-[#ff4d1c] selection:text-white overflow-x-hidden font-sans`}
       >
         {children}
+        <Chatbot />
       </body>
     </html>
   );

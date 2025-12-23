@@ -24,6 +24,9 @@ import {
 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import QuoteForm from "@/components/QuoteForm";
+import PromotionalPopup from "@/components/PromotionalPopup";
+import ReviewCarousel from "@/components/ReviewCarousel";
 
 // Data for Advantages Section
 const advantages = [
@@ -52,14 +55,14 @@ const advantages = [
     id: "local",
     title: "Marietta Local Business",
     icon: <MapPin className="w-5 h-5" />,
-    image: "https://images.unsplash.com/photo-1577744383186-b4d00891d4e0?q=80&w=1974&auto=format&fit=crop", // Local home / friendly vibe
+    image: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?q=80&w=2070&auto=format&fit=crop", // American Home / Neighborhood
     description: "We are your neighbors. Rooted in Marietta, we are committed to enhancing our local community one home at a time.",
   },
   {
     id: "satisfaction",
     title: "Satisfaction Guaranteed",
     icon: <Medal className="w-5 h-5" />,
-    image: "https://images.unsplash.com/photo-1621905252507-b35492cc253e?q=80&w=1974&auto=format&fit=crop", // Finished room / happy vibe
+    image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=2070&auto=format&fit=crop", // Handshake
     description: "We don't leave until you're happy. Our reputation relies on your satisfaction, and we stand behind the quality of our craftsmanship.",
   },
 ];
@@ -68,6 +71,7 @@ const advantages = [
 const services = [
   {
     id: "cabinetry",
+    slug: "custom-cabinetry",
     label: "Custom Cabinetry",
     tag: "01",
     image: "https://images.unsplash.com/photo-1600607687644-c7171b42498f?q=80&w=2070&auto=format&fit=crop", // Reliable kitchen/cabinetry image
@@ -76,6 +80,7 @@ const services = [
   },
   {
     id: "deck",
+    slug: "deck-building",
     label: "Deck Building",
     tag: "02",
     image: "https://images.unsplash.com/photo-1591825729269-caeb344f6df2?q=80&w=1470&auto=format&fit=crop",
@@ -84,6 +89,7 @@ const services = [
   },
   {
     id: "trim",
+    slug: "trim-work",
     label: "Trim Work",
     tag: "03",
     image: "https://images.unsplash.com/photo-1600585154363-67eb9e2e2099?q=80&w=1470&auto=format&fit=crop",
@@ -92,17 +98,19 @@ const services = [
   },
   {
     id: "flooring",
+    slug: "flooring",
     label: "Flooring",
     tag: "04",
-    image: "https://images.unsplash.com/photo-1581858726768-758a030e9048?q=80&w=1470&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1562663474-6cbb3eaa4d14?q=80&w=2070&auto=format&fit=crop",
     description: "Expert installation of hardwood, laminate, and luxury vinyl plank.",
     longDescription: "Ground your home with beautiful flooring. We handle everything from subfloor preparation to the flawless installation of solid wood or modern engineered planks.",
   },
   {
     id: "renovations",
+    slug: "renovations",
     label: "Renovations",
     tag: "05",
-    image: "https://images.unsplash.com/photo-1574359653015-749813e31ea7?q=80&w=1471&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2070&auto=format&fit=crop",
     description: "Full-scale room remodels managing framing to finish.",
     longDescription: "Ready for a change? We manage complex renovation projects, ensuring structural integrity while delivering the fresh, modern aesthetic you envision.",
   },
@@ -112,40 +120,46 @@ const services = [
 const projects = [
   {
     id: "estate",
+    slug: "big-oaks-estate",
     title: "Big Oaks Estate",
     description: "A full-scale renovation featuring custom coffered ceilings, hardwood flooring, and a wraparound deck.",
-    mainImage: "https://images.unsplash.com/photo-1600607687920-4e2b5f082d28?q=80&w=1470&auto=format&fit=crop",
+    mainImage: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=2570&auto=format&fit=crop", // Luxury Modern Villa
     gallery: [
-      "https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?q=80&w=800&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=800&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800&auto=format&fit=crop"
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800&auto=format&fit=crop", // Detail
+      "https://images.unsplash.com/photo-1613545325278-f24b0cae1224?q=80&w=800&auto=format&fit=crop", // Pool
+      "https://images.unsplash.com/photo-1613977257363-707ba9348227?q=80&w=800&auto=format&fit=crop"  // Living Room
     ]
   },
   {
     id: "kitchen",
+    slug: "marietta-kitchen-makeover",
     title: "Marietta Kitchen Makeover",
     description: "Complete kitchen overhaul with custom shaker cabinets, quartz countertops, and a new island layout.",
-    mainImage: "https://images.unsplash.com/photo-1556909212-d5b604d0c90d?q=80&w=1470&auto=format&fit=crop", // Open kitchen
+    mainImage: "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?q=80&w=1470&auto=format&fit=crop", // White/Blue Kitchen
     gallery: [
-      "https://images.unsplash.com/photo-1556912173-3db9963f6bee?q=80&w=1470&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1556909190-eccf4a8bf97a?q=80&w=1470&auto=format&fit=crop"
+      "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1470&auto=format&fit=crop", // Detail
+      "https://images.unsplash.com/photo-1600607687644-c7171b42498f?q=80&w=2070&auto=format&fit=crop"  // New detail (Kitchen Sink/Faucet)
     ]
   },
   {
     id: "library",
+    slug: "custom-library-shelving",
     title: "Custom Library Shelving",
     description: "Floor-to-ceiling built-in bookcases with integrated lighting and rolling ladder track.",
-    mainImage: "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?q=80&w=1600&auto=format&fit=crop",
+    mainImage: "https://images.unsplash.com/photo-1505664194779-8beaceb93744?q=80&w=1600&auto=format&fit=crop", // New Library Main (Modern Shelving)
     gallery: [
-      "https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=1470&auto=format&fit=crop"
+      "https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=1470&auto=format&fit=crop", // Bookshelves
+      "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?q=80&w=1600&auto=format&fit=crop" // Old main image as gallery
     ]
   }
 ];
 
 export default function Home() {
-  const [activeAdvantage, setActiveAdvantage] = useState(advantages[0]);
-  const [activeService, setActiveService] = useState(services[0]);
-  const [expandedProjects, setExpandedProjects] = useState<string[]>([]);
+  // Fix types by avoiding implicit any
+  const [activeAdvantage, setActiveAdvantage] = useState<typeof advantages[0]>(advantages[0]);
+  const [activeService, setActiveService] = useState<typeof services[0]>(services[0]);
+  const [expandedProjects, setExpandedProjects] = useState<string[]>(["estate"]);
+  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
   const [formStatus, setFormStatus] = useState<"idle" | "submitting" | "success">("idle");
 
   const toggleProject = (id: string) => {
@@ -183,9 +197,10 @@ export default function Home() {
           <div className="absolute inset-0 bg-linear-to-t from-[#0f0f0f] via-[#0f0f0f]/30 to-transparent"></div>
         </div>
 
+
         {/* Content */}
-        <div className="relative z-10 px-6 md:px-12 w-full max-w-screen-2xl mx-auto flex flex-col md:flex-row items-end justify-between gap-8">
-          <div className="max-w-4xl">
+        <div className="relative z-10 px-6 md:px-12 w-full max-w-screen-2xl mx-auto flex flex-col md:flex-row items-end justify-between gap-12 pb-12">
+          <div className="max-w-4xl pb-4">
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-medium uppercase leading-[0.9] tracking-tighter text-white mb-6">
               Mastering <br />
               The Craft<span className="text-[#ff4d1c]">.</span>
@@ -195,12 +210,7 @@ export default function Home() {
             </p>
           </div>
 
-          <a
-            href="#vision"
-            className="group relative flex items-center justify-center w-20 h-20 md:w-24 md:h-24 bg-[#ff4d1c] rounded-full transition-transform hover:scale-110 hover:rotate-45"
-          >
-            <ArrowDownRight className="w-8 h-8 text-white stroke-[1.5]" />
-          </a>
+          <QuoteForm />
         </div>
       </section>
 
@@ -217,7 +227,7 @@ export default function Home() {
             <img
               src="https://images.unsplash.com/photo-1540569014015-19a7be504e3a?q=80&w=200&h=200&auto=format&fit=crop" // New profile placeholder
               alt="Mike Gervais"
-              className="w-16 h-16 rounded-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+              className="w-16 h-16 rounded-full object-cover transition-all duration-500"
             />
             <div className="text-center">
               <p className="text-sm font-medium text-[#0f0f0f]">Mike Gervais</p>
@@ -288,7 +298,7 @@ export default function Home() {
       </section>
 
       {/* 5. Services Section (Interactive) */}
-      <section className="bg-[#141414] py-24 md:py-32 px-6 md:px-12 border-t border-white/5">
+      <section id="services" className="bg-[#141414] py-24 md:py-32 px-6 md:px-12 border-t border-white/5">
         <div className="max-w-screen-2xl mx-auto">
           <span className="text-[#ff4d1c] text-xs font-medium tracking-widest uppercase mb-12 block">
             Our Services
@@ -297,10 +307,23 @@ export default function Home() {
           <div className="flex flex-col lg:flex-row h-auto lg:h-[600px] gap-0 border-t border-b border-white/10">
             {/* Active Panel (Takes up space) */}
             <div className="flex-1 border-r border-white/10 p-8 md:p-12 flex flex-col justify-between relative group overflow-hidden">
-              <div className="z-20 relative">
+              <div className="z-20 relative flex justify-between items-start">
                 <h3 className="text-3xl md:text-5xl font-medium uppercase leading-none tracking-tight mb-4 text-white">
                   {activeService.label}
                 </h3>
+
+                {/* Rotating Arrow Button */}
+                <Link
+                  href={`/services/${(activeService as any).slug}`}
+                  className="flex items-center gap-4 group/btn"
+                >
+                  <span className="text-xs font-medium uppercase tracking-widest text-white/60 group-hover/btn:text-[#ff4d1c] transition-colors">
+                    Learn More
+                  </span>
+                  <div className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center group-hover/btn:bg-[#ff4d1c] group-hover/btn:border-[#ff4d1c] group-hover/btn:text-white text-white/50 transition-all duration-300">
+                    <ArrowUpRight className="w-5 h-5 transition-transform duration-300 group-hover/btn:rotate-45" />
+                  </div>
+                </Link>
               </div>
 
               <div className="relative w-full h-64 mt-8 overflow-hidden z-10">
@@ -350,64 +373,98 @@ export default function Home() {
             Recent Projects
           </span>
 
-          {/* Main Showcase (Big Oaks Estate) */}
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-neutral-300 pb-8 mb-12">
-            <h2 className="text-4xl md:text-6xl font-normal uppercase tracking-tight">
-              {projects[0].title}
-            </h2>
-            <div className="mt-6 md:mt-0 flex gap-6 items-center">
-              <p className="text-xs md:text-sm text-neutral-500 max-w-xs text-right">
-                {projects[0].description}
-              </p>
-              <div className="w-10 h-10 rounded-full border border-neutral-300 flex items-center justify-center hover:bg-[#ff4d1c] hover:border-[#ff4d1c] hover:text-white transition-all cursor-pointer">
-                <ArrowUpRight className="w-5 h-5" />
-              </div>
-            </div>
-          </div>
-
-          {/* Static Grid for Big Oaks */}
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 mb-24">
-            <div className="md:col-span-3 h-64 md:h-96 relative overflow-hidden group">
-              <img src={projects[0].gallery[0]} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-            </div>
-            <div className="md:col-span-4 h-64 md:h-96 relative overflow-hidden mt-0 md:mt-12 group">
-              <img src={projects[0].gallery[1]} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale hover:grayscale-0" />
-            </div>
-            <div className="md:col-span-5 h-64 md:h-96 relative overflow-hidden group">
-              <img src={projects[0].gallery[2]} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-            </div>
-          </div>
-
-
-          {/* Expandable Project List */}
           <div className="flex flex-col border-t border-neutral-300">
-            {projects.slice(1).map((project, idx) => {
+            {projects.map((project, idx) => {
               const isExpanded = expandedProjects.includes(project.id);
               return (
-                <div key={project.id} className="border-b border-neutral-300">
+                <div
+                  key={project.id}
+                  className={`border-b border-neutral-300 transition-all duration-500 ${isExpanded ? "py-12" : ""}`}
+                >
                   <div
+                    className={`group py-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 cursor-pointer transition-all duration-500 ${isExpanded ? "-mx-6 px-6 md:-mx-12 md:px-12" : ""}`}
                     onClick={() => toggleProject(project.id)}
-                    className="group py-10 flex justify-between items-center cursor-pointer"
                   >
-                    <h3 className={`text-2xl md:text-4xl font-light uppercase transition-all tracking-tight ${isExpanded ? "text-black font-normal" : "text-neutral-400 group-hover:text-black group-hover:font-normal"}`}>
-                      {project.title}
-                    </h3>
-                    <div className="flex items-center gap-4">
-                      <span className="text-sm font-mono text-neutral-400">0{idx + 2}</span>
-                      <ChevronDown className={`w-5 h-5 text-neutral-400 transition-transform duration-300 ${isExpanded ? "rotate-180 text-[#ff4d1c]" : ""}`} />
+                    <div className="flex items-center gap-6 flex-1">
+                      <span className={`text-sm font-mono ${isExpanded ? "text-[#ff4d1c]" : "text-neutral-400"}`}>0{idx + 1}</span>
+                      <h3 className={`font-light uppercase transition-all tracking-tight ${isExpanded ? "text-4xl md:text-6xl font-medium text-neutral-900" : "text-2xl md:text-4xl text-neutral-400 group-hover:text-black group-hover:font-normal"}`}>
+                        {project.title}
+                      </h3>
+                    </div>
+
+                    <div className="flex items-center gap-8 self-end md:self-auto">
+                      <div className={`p-2 rounded-full transition-colors ${isExpanded ? 'bg-[#ff4d1c] text-white' : 'hover:bg-neutral-100 text-neutral-400'}`}>
+                        <ChevronDown className={`w-6 h-6 transition-transform duration-500 ${isExpanded ? "rotate-180" : ""}`} />
+                      </div>
                     </div>
                   </div>
 
                   {/* Expanded Content */}
-                  <div className={`overflow-hidden transition-all duration-500 ease-in-out ${isExpanded ? "max-h-[800px] pb-10" : "max-h-0"}`}>
-                    <p className="text-neutral-500 text-sm md:text-base max-w-2xl mb-8 leading-relaxed">
-                      {project.description}
-                    </p>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <img src={project.mainImage} className="w-full h-64 object-cover rounded-sm" />
-                      {project.gallery.map((url, i) => (
-                        <img key={i} src={url} className="w-full h-64 object-cover rounded-sm" />
-                      ))}
+                  {/* Expanded Content */}
+                  <div className={`overflow-hidden transition-all duration-700 ease-in-out ${isExpanded ? "max-h-[3000px] opacity-100" : "max-h-0 opacity-0"}`}>
+                    <div className={`-mx-6 px-6 md:-mx-12 md:px-12 pb-16`}>
+                      {/* Varied Grid Layouts */}
+                      <div className="pt-8 border-t border-neutral-200 mb-10">
+                        {idx % 3 === 0 && (
+                          <div className="grid grid-cols-2 gap-4">
+                            <div className="col-span-2 h-[400px] relative overflow-hidden rounded-lg group/img">
+                              <img src={project.mainImage} className="w-full h-full object-cover transition-transform duration-700 group-hover/img:scale-105" />
+                            </div>
+                            {project.gallery.slice(0, 2).map((url, i) => (
+                              <div key={i} className="col-span-1 h-[300px] relative overflow-hidden rounded-lg group/img">
+                                <img src={url} className="w-full h-full object-cover transition-transform duration-700 group-hover/img:scale-105" />
+                              </div>
+                            ))}
+                          </div>
+                        )}
+
+                        {idx % 3 === 1 && (
+                          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:h-[600px] mb-24">
+                            <div className="md:col-span-2 h-64 md:h-full relative overflow-hidden rounded-lg group/img">
+                              <img src={project.mainImage} className="w-full h-full object-cover transition-transform duration-700 group-hover/img:scale-105" />
+                            </div>
+                            <div className="flex flex-row md:flex-col gap-4 h-48 md:h-full">
+                              {project.gallery.slice(0, 2).map((url, i) => (
+                                <div key={i} className="flex-1 relative overflow-hidden rounded-lg group/img">
+                                  <img src={url} className="w-full h-full object-cover transition-transform duration-700 group-hover/img:scale-105" />
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+
+                        {idx % 3 === 2 && (
+                          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div className="h-[400px] md:h-[500px] relative overflow-hidden rounded-lg group/img">
+                              <img src={project.mainImage} className="w-full h-full object-cover transition-transform duration-700 group-hover/img:scale-105" />
+                            </div>
+                            {project.gallery.slice(0, 2).map((url, i) => (
+                              <div key={i} className="h-[400px] md:h-[500px] relative overflow-hidden rounded-lg group/img">
+                                <img src={url} className="w-full h-full object-cover transition-transform duration-700 group-hover/img:scale-105" />
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+
+                      {/* Text Section at Bottom */}
+                      <div className="flex flex-col md:flex-row justify-between items-end gap-8 pt-12">
+                        <div className="max-w-2xl">
+                          <p className="text-neutral-600 text-lg md:text-xl font-light leading-relaxed">
+                            {project.description}
+                          </p>
+                        </div>
+                        <Link
+                          href={`/projects/${project.slug}`}
+                          className="flex items-center gap-4 group/link shrink-0"
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          <span className="text-xs font-medium uppercase tracking-widest text-neutral-900 group-hover/link:text-[#ff4d1c] transition-colors">See Case Study</span>
+                          <div className="w-12 h-12 rounded-full border border-neutral-200 flex items-center justify-center group-hover/link:bg-[#ff4d1c] group-hover/link:border-[#ff4d1c] group-hover/link:text-white transition-all">
+                            <ArrowUpRight className="w-5 h-5 transition-transform duration-300 group-hover/link:rotate-45" />
+                          </div>
+                        </Link>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -417,8 +474,10 @@ export default function Home() {
         </div>
       </section>
 
+      <ReviewCarousel />
+
       {/* 7. FAQ Section */}
-      <section className="bg-[#f5f5f5] text-[#0f0f0f] pb-24 md:pb-32 px-6 md:px-12">
+      <section className="bg-[#f5f5f5] text-[#0f0f0f] pt-24 pb-24 md:pb-32 px-6 md:px-12">
         <div className="max-w-3xl mx-auto">
           {/* Reuse existing FAQ HTML structure but maybe extract later */}
           <div className="text-center mb-16">
@@ -428,17 +487,28 @@ export default function Home() {
 
           <div className="space-y-4">
             {["Do you offer free estimates?", "What areas do you serve?", "Are you licensed and insured?"].map((q, i) => (
-              <details key={i} className="group border-b border-neutral-300 pb-4">
-                <summary className="flex justify-between items-center cursor-pointer py-4 list-none">
-                  <span className="text-lg md:text-xl font-light group-hover:text-[#ff4d1c] transition-colors">{q}</span>
-                  <ChevronDown className="w-5 h-5 text-neutral-400 transition-transform group-open:rotate-180" />
-                </summary>
-                <div className="text-neutral-500 text-sm md:text-base leading-relaxed mt-2">
-                  {i === 0 && "Yes, we provide free preliminary estimates for all residential projects in the Marietta area."}
-                  {i === 1 && "We are based in Marietta, GA (30064) and serve the surrounding communities."}
-                  {i === 2 && "Yes, Crossworks Carpentry is fully licensed and insured, ensuring peace of mind for every project."}
+              <div key={i} className="border-b border-neutral-300">
+                <button
+                  onClick={() => setOpenFaqIndex(openFaqIndex === i ? null : i)}
+                  className="w-full flex justify-between items-center py-6 text-left group"
+                >
+                  <span className={`text-lg md:text-xl font-light transition-colors duration-300 ${openFaqIndex === i ? "text-[#ff4d1c]" : "text-[#0f0f0f] group-hover:text-[#ff4d1c]"}`}>
+                    {q}
+                  </span>
+                  <div className={`p-2 rounded-full transition-colors duration-300 ${openFaqIndex === i ? "bg-[#ff4d1c] text-white" : "bg-neutral-100 text-neutral-400 group-hover:bg-neutral-200"}`}>
+                    <ChevronDown className={`w-5 h-5 transition-transform duration-500 ease-in-out ${openFaqIndex === i ? "rotate-180" : ""}`} />
+                  </div>
+                </button>
+                <div
+                  className={`overflow-hidden transition-all duration-700 ease-in-out ${openFaqIndex === i ? "max-h-[200px] opacity-100 pb-6" : "max-h-0 opacity-0"}`}
+                >
+                  <p className="text-neutral-500 text-sm md:text-base leading-relaxed">
+                    {i === 0 && "Yes, we provide free preliminary estimates for all residential projects in the Marietta area."}
+                    {i === 1 && "We are based in Marietta, GA (30064) and serve the surrounding communities."}
+                    {i === 2 && "Yes, Crossworks Carpentry is fully licensed and insured, ensuring peace of mind for every project."}
+                  </p>
                 </div>
-              </details>
+              </div>
             ))}
           </div>
         </div>
@@ -492,6 +562,7 @@ export default function Home() {
       </section>
 
       <Footer />
+      <PromotionalPopup />
     </>
   );
 }

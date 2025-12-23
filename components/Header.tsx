@@ -12,7 +12,10 @@ export default function Header() {
 
     return (
         <>
-            <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-6 md:px-12 transition-all duration-300 backdrop-blur-sm bg-linear-to-b from-black/50 to-transparent">
+            <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-6 md:px-12 transition-all duration-300">
+                {/* Gradual Blur Background */}
+                <div className="absolute top-0 left-0 right-0 h-32 z-[-1] bg-gradient-to-b from-black/80 to-transparent backdrop-blur-md [mask-image:linear-gradient(to_bottom,black_60%,transparent)]"></div>
+
                 {/* Left */}
                 <button
                     onClick={toggleMenu}
@@ -28,12 +31,22 @@ export default function Header() {
                 </div>
 
                 {/* Right */}
-                <Link
-                    href="/contact"
-                    className="bg-[#ff4d1c] hover:bg-[#c2410c] text-white text-xs font-medium px-6 py-3 rounded-full uppercase tracking-wider transition-transform hover:scale-105"
-                >
-                    Get a Quote
-                </Link>
+                <div className="flex items-center gap-6">
+                    <div className="hidden lg:flex flex-col items-end text-right">
+                        <a href="tel:+17707140275" className="text-white text-sm font-medium hover:text-[#ff4d1c] transition-colors tracking-wide">
+                            (770) 714-0275
+                        </a>
+                        <span className="text-white/50 text-[10px] uppercase tracking-widest">
+                            Mon - Fri: 8am - 6pm
+                        </span>
+                    </div>
+                    <Link
+                        href="/contact"
+                        className="bg-[#ff4d1c] hover:bg-[#c2410c] text-white text-xs font-medium px-6 py-3 rounded-full uppercase tracking-wider transition-transform hover:scale-105"
+                    >
+                        Get a Quote
+                    </Link>
+                </div>
             </header>
 
             {/* Overlay Background */}
@@ -60,6 +73,7 @@ export default function Header() {
                 <div className="flex-1 flex flex-col justify-center px-8 gap-8">
                     <Link href="/" onClick={toggleMenu} className="text-3xl font-light uppercase hover:text-[#ff4d1c] hover:translate-x-2 transition-all text-white">Home</Link>
                     <Link href="/services" onClick={toggleMenu} className="text-3xl font-light uppercase hover:text-[#ff4d1c] hover:translate-x-2 transition-all text-white">Services</Link>
+                    <Link href="/projects" onClick={toggleMenu} className="text-3xl font-light uppercase hover:text-[#ff4d1c] hover:translate-x-2 transition-all text-white">Projects</Link>
                     <Link href="/gallery" onClick={toggleMenu} className="text-3xl font-light uppercase hover:text-[#ff4d1c] hover:translate-x-2 transition-all text-white">Gallery</Link>
                     <Link href="/reviews" onClick={toggleMenu} className="text-3xl font-light uppercase hover:text-[#ff4d1c] hover:translate-x-2 transition-all text-white">Reviews</Link>
                     <Link href="/contact" onClick={toggleMenu} className="text-3xl font-light uppercase hover:text-[#ff4d1c] hover:translate-x-2 transition-all text-white">Contact</Link>
