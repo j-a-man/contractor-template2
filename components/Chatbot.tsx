@@ -128,8 +128,11 @@ export default function Chatbot() {
         <div className="fixed bottom-6 right-6 z-[100] flex flex-col items-end gap-4 pointer-events-none">
             {/* ... (Chat Window container code is same until input) */}
             <div
-                className={`pointer-events-auto w-[350px] md:w-[400px] bg-[#1a1a1a] rounded-2xl overflow-hidden shadow-2xl border border-white/10 transition-all duration-500 origin-bottom-right transform ${isOpen ? "opacity-100 scale-100 translate-y-0" : "opacity-0 scale-95 translate-y-12 pointer-events-none"}`}
-                style={{ maxHeight: "600px" }}
+                className={`pointer-events-auto bg-[#1a1a1a] shadow-2xl border border-white/10 overflow-hidden flex flex-col transition-all duration-500 origin-bottom-right
+                    ${isOpen ? "opacity-100 scale-100 pointer-events-auto translate-y-0" : "opacity-0 scale-95 pointer-events-none translate-y-12"}
+                    fixed inset-0 z-[101] w-full h-[100dvh] rounded-none
+                    md:absolute md:bottom-20 md:right-0 md:inset-auto md:w-[400px] md:h-auto md:max-h-[600px] md:rounded-2xl
+                `}
             >
                 {/* Header */}
                 <div className="bg-[#ff4d1c] p-4 flex justify-between items-center text-white">
